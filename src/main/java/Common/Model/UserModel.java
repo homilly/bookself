@@ -1,6 +1,6 @@
-package hello.Model;
+package Common.Model;
 
-public class Person {
+public class UserModel {
 
     private long id;
 
@@ -10,11 +10,11 @@ public class Person {
 
     private String signature;
 
-    public Person(long id) {
+    public UserModel(long id) {
         this.id = id;
     }
 
-    public Person(String name, String sex) {
+    public UserModel(String name, String sex) {
         this.name = name;
         this.sex = sex;
     }
