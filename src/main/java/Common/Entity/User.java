@@ -1,5 +1,7 @@
-package hello.Entity;
+package Common.Entity;
 
+
+import org.hibernate.validator.constraints.UniqueElements;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,7 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Person {
+public class User {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
@@ -18,6 +20,9 @@ public class Person {
     private String sex;
 
     private String signature;
+
+    @UniqueElements
+    private String username;
 
     public Integer getId() {
         return id;
@@ -49,5 +54,13 @@ public class Person {
 
     public void setSignature(String signature) {
         this.signature = signature;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 }
