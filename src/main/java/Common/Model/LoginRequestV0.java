@@ -1,6 +1,6 @@
 package Common.Model;
 
-public class loginRequestV0 {
+public class LoginRequestV0 {
     private int userPhone;
     private String username;
 

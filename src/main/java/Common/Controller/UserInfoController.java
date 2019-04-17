@@ -6,6 +6,7 @@ import Common.Entity.Writer;
 import Common.Repository.UserRepository;
 import Common.Repository.ReaderRepository;
 import Common.Repository.WriterRepository;
+import Common.Service.IndexService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,7 +20,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/user")
-public class PersonInfoController {
+public class UserInfoController {
 
     @Autowired
     UserRepository userRepository;
@@ -30,9 +31,11 @@ public class PersonInfoController {
     @Autowired
     ReaderRepository readerRepository;
 
+    @Autowired
+    IndexService indexService;
 
-    @RequestMapping("/all")
-    public String getAllPerson(Model model) {
+    @RequestMapping("/allUsers")
+    public String getAllUsers(Model model) {
 
         Iterable<User> person = userRepository.findAll();
 
@@ -43,48 +46,32 @@ public class PersonInfoController {
 
         model.addAttribute("personList",personList);
 
-//        model.addAttribute("id","000001");
-//        model.addAttribute("name","xiao hua");
-
-        return "UserInfoPage";
-
-//        return personRepository.findAll();
-
+        return "userInfoPage";
 
     }
 
-    @RequestMapping("/writer")
-    public @ResponseBody
-    Iterable<Writer> getAllWriter() {
-        return writerRepository.findAll();
+    @RequestMapping("/allWriters")
+    public @ResponseBody String getAllWriter(Model model) {
+        List<Writer> writerList = indexService.getAllWriters();
+        model.addAttribute("writerList",writerList);
+        return "writersGroundPage";
     }
 
-    @RequestMapping("/reader")
-    public @ResponseBody
-    Iterable<Reader> getAllReader() {
+    @RequestMapping("/allReaders")
+    public @ResponseBody Iterable<Reader> getAllReader() {
         return readerRepository.findAll();
     }
 
-    @RequestMapping("add")
-    public String createUserInfo(@RequestParam(value = "name", defaultValue = "xiao ming") String name) {
+    @RequestMapping("/addUser")
+    public void createUserInfo(User user) {
 
-        String sex = "male";
+        userRepository.save(user);
 
-        User person = new User();
-
-        person.setName(name);
-
-        person.setSex(sex);
-
-        person.setSignature("I must be consider future");
-
-        userRepository.save(person);
-
-        return "saved";
+        return;
 
     }
 
-    @RequestMapping("addWriter")
+    @RequestMapping("/addWriter")
     public String createWriterInfo(@RequestParam(value = "name") String name) {
 
 
@@ -97,7 +84,7 @@ public class PersonInfoController {
         return "Writer information saved. ";
     }
 
-    @RequestMapping("addReader")
+    @RequestMapping("/addReader")
     public String createReaderInfo(@RequestParam(value = "name") String name, String gender) {
         Reader reader = new Reader();
         reader.setName(name);

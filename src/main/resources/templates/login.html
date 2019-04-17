@@ -3,14 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <title>login</title>
+    <style type="text/css">
+        .box{
+            width: 300px;
+            height: 155px;
+
+
+            margin-left: 450px;
+            margin-top: 150px;
+        }
+        form {color:red;text-align: center}
+    </style>
+    <link rel="stylesheet" href="login.css" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="login.js"></script>
 </head>
 <body>
+<div class="box">
 <form action="/login" method="post">
-    <input type="text" name="username"/></br>
-    <input type="password" name="password"/></br>
+    <input type="text" name="username" placeholder="请输入用户名"/></br>
+    <input type="password" name="password" placeholder="请输入密码"/></br>
     <input type="submit" value="登陆"/></br>
-    <a href="register" target="_blank">注册</a>
+    <a href="linkedRegister" target="_blank">注册</a>
 </form>
+</div>
+
+<div id="app">
+    {{ message }}
+</div>
 
 </body>
+
 </html>

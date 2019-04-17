@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>作家天地</title>
+</head>
+<body>
+
+
+<p>作者 --- 个人空间</p>
+
+<tr>
+    <th>ID</th>
+    <th>NAME</th>
+    <!--<th>个性签名</th>-->
+</tr>
+
+<br>
+<tr th:each="writer : ${writerList}">
+
+    <td th:text="${writer.id}">001</td>
+    <td th:text="${writer.name}">xiao yu</td>
+    <!--<td th:text="${writer.signature}">I have a dream.</td><br>-->
+</tr>
+
+</body>
+</html>

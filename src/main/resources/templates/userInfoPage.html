@@ -12,13 +12,15 @@
     <tr>
         <th>ID</th>
         <th>NAME</th>
+        <th>个性签名</th>
     </tr>
 
+    <br>
     <tr th:each="person : ${personList}">
 
         <td th:text="${person.id}">001</td>
         <td th:text="${person.name}">xiao yu</td>
-
+        <td th:text="${person.signature}">I have a dream.</td><br>
     </tr>
 
 </body>

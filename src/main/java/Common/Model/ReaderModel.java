@@ -1,18 +1,22 @@
 package Common.Model;
 
+
+import javax.persistence.Id;
+
 public class ReaderModel {
 
-    private Integer Id;
+    @javax.persistence.Id
+    private long Id;
 
     private String name;
 
     private String gender;
 
-    public Integer getId() {
+    public long getId() {
         return Id;
     }
 
-    public void setId(Integer id) {
+    public void setId(long id) {
         Id = id;
     }
 

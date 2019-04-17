@@ -8,15 +8,15 @@ import javax.persistence.GenerationType;
 public class Writer {
     @javax.persistence.Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    private Integer Id;
+    private long Id;
 
     private String name;
 
-    public Integer getId() {
+    public long getId() {
         return Id;
     }
 
-    public void setId(Integer id) {
+    public void setId(long id) {
         Id = id;
     }
 

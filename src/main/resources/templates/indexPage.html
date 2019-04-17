@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Common</title>
+</head>
+<body>
+
+
+    <p>Welcome to Reading Room </p>
+
+    <tr>
+        <th>ID</th>
+        <th>NAME</th>
+
+    </tr>
+
+    <br>
+    <tr th:each="writer : ${writerList}">
+
+        <td th:text="${writer.id}">001</td>
+        <td th:text="${writer.name}">xiao yu</td>
+        <a th:href="@{/zone/(id = ${writer.id})}" target="_blank">进入作者个人空间</a>
+        <br>
+
+    </tr>
+
+
+</body>
+</html>
